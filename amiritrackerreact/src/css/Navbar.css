@@ -1,0 +1,11 @@
+nav{
+    width: 70%;
+    height: 50%;
+
+    color: var(--offwhite);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}

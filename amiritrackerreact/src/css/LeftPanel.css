@@ -1,0 +1,23 @@
+.left{
+    width: 100%;
+
+    background-color: var(--darkgreen);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.balance{
+    width: 75%;
+    height: 20%;
+
+    background-color: var(--lightgreen);
+
+    border-radius: 1.2vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

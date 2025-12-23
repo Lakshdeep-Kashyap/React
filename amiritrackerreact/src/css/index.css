@@ -7,6 +7,12 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  --darkgreen: #1C352D;
+  --lightgreen: #A6B28B;
+  --creme: #F5C9B0;
+  --offwhite: #F9F6F3;
+  --white: #ffffff;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -24,10 +30,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 h1 {
