@@ -1,16 +1,23 @@
 import { useState } from "react"
 
-function Form({addExpense}){
+function Form({addIncome,addExpense}){
+    const [i,setI] = useState(0)
     const [s,setS] = useState(0)
     const [n,setN] = useState("")
     const [c,setC] = useState("Rent")
 
     function handleEnter(){
+        addIncome(i)
         addExpense(s,n,c)
     }
     return(
         <>
             <form onSubmit={handleEnter}>
+                <input 
+                    type="Number"
+                    placeholder="Enter Income!"
+                    onChange={(e)=>{setI(e.target.value)}}
+                />
                 <input 
                     type="Number"
                     placeholder="Enter Money Spent!"

@@ -2,10 +2,10 @@ import Navbar from "./Navbar"
 
 import "../css/LeftPanel.css"
 
-function LeftPanel(){
+function LeftPanel({balance}){
     return(
         <aside className="left">
-            <div className="balance">$123</div>
+            <div className="balance">${balance}</div>
             <Navbar/>
         </aside>
     )

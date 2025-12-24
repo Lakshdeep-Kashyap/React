@@ -1,15 +1,24 @@
-import {useLocalStorage} from "../hooks/useLocalStorage.js"
 import Form from "../components/Form.jsx"
 import ExpensesList from "../components/ExpensesList.jsx"
 
-function Dashboard(){
-    const [allexpenses,setAllExpenses] = 
-    useLocalStorage("allexpensesss",[
-        {id:1,spent:1000,note:"Rent",category:"Rent"},
-        {id:2,spent:200,note:"Ate-Out",category:"Food"}
-    ])
+// import {useLocalStorage} from "../hooks/useLocalStorage.js"
+
+function Dashboard({setBalance,allexpenses,setAllExpenses}){
+    // const [allexpenses,setAllExpenses] = 
+    // useLocalStorage("allexpensesss",[
+    //     {id:1,spent:1000,note:"Rent",category:"Rent"},
+    //     {id:2,spent:200,note:"Ate-Out",category:"Food"}
+    // ])
+
+  function addIncome(i){
+    if(i===0) return
+    setBalance(prev=>prev+Number(i))
+  }
 
   function addExpense(s,n,c){
+    if(s===0){
+      return
+    }
     let newexp = {
       id:Date.now(),
       spent:s===0?0:s,
@@ -27,6 +36,7 @@ function Dashboard(){
   return(
     <>
       <Form
+        addIncome={addIncome}
         addExpense={addExpense}
       />
       <ExpensesList
