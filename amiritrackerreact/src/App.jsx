@@ -7,6 +7,8 @@ import RightPanel from "./components/RightPanel"
 import { useLocalStorage } from "./hooks/useLocalStorage"
 
 import "./css/App.css"
+import { useMemo } from "react"
+// import { useEffect, useState } from "react"
 
 function App(){
   const [allexpenses,setAllExpenses] = 
@@ -15,13 +17,20 @@ function App(){
           {id:2,spent:200,note:"Ate-Out",category:"Food"}
       ])
     
-  const  [balance,setBalance] = useLocalStorage("balanceee",0)
+  const [balance,setBalance] = useLocalStorage("balanceee",0)
+
+  const left = useMemo(()=>{
+    const totalSpent = allexpenses.reduce(
+      (sum,exp) => sum + exp.spent , 0
+    )
+    return balance-Number(totalSpent)
+  },[balance,allexpenses])
 
   return(
     <>
       <div className="applayout">
         <LeftPanel
-          balance={balance}
+          balance={left}
         />
         <MidPanel
           setBalance={setBalance}
@@ -30,6 +39,7 @@ function App(){
         />
         <RightPanel
           allexpenses={allexpenses}
+          setAllExpenses={setAllExpenses}
         />
       </div>
     </>
