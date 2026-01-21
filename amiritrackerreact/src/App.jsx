@@ -7,39 +7,41 @@ import RightPanel from "./components/RightPanel"
 import { useLocalStorage } from "./hooks/useLocalStorage"
 
 import "./css/App.css"
-import { useMemo } from "react"
 // import { useEffect, useState } from "react"
 
 function App(){
-  const [allexpenses,setAllExpenses] = 
-      useLocalStorage("allexpensesss",[
-          {id:1,spent:1000,note:"Rent",category:"Rent"},
-          {id:2,spent:200,note:"Ate-Out",category:"Food"}
+  const [alltransactions,setAllTransactions] = 
+      useLocalStorage("alltransactionsss",[
+          {id:1,spent:1000,note:"Rent",category:"Rent",type:"expense"},
+          {id:2,spent:200,note:"Ate-Out",category:"Food",type:"expense"}
       ])
     
-  const [balance,setBalance] = useLocalStorage("balanceee",0)
+  // const [balance,setBalance] = useLocalStorage("balanceee",0)
 
-  const left = useMemo(()=>{
-    const totalSpent = allexpenses.reduce(
-      (sum,exp) => sum + exp.spent , 0
-    )
-    return balance-Number(totalSpent)
-  },[balance,allexpenses])
+  // const left = useMemo(()=>{
+  //   const totalSpent = alltransactions.reduce(
+  //     (sum,exp) => sum + exp.spent , 0
+  //   )
+  //   if(balance-Number(totalSpent) < 0){
+  //     alert ("You have exceeded your balance!")
+  //     return 0
+  //   }
+  //   return balance-Number(totalSpent)
+  // },[balance,alltransactions])
 
   return(
     <>
       <div className="applayout">
         <LeftPanel
-          balance={left}
+          alltransactions={alltransactions}
         />
         <MidPanel
-          setBalance={setBalance}
-          allexpenses={allexpenses}
-          setAllExpenses={setAllExpenses}
+          alltransactions={alltransactions}
+          setAllTransactions={setAllTransactions}
         />
         <RightPanel
-          allexpenses={allexpenses}
-          setAllExpenses={setAllExpenses}
+          alltransactions={alltransactions}
+          setAllTransactions={setAllTransactions}
         />
       </div>
     </>

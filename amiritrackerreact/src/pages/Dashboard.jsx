@@ -3,36 +3,31 @@ import ExpensesList from "../components/ExpensesList.jsx"
 
 // import {useLocalStorage} from "../hooks/useLocalStorage.js"
 
-function Dashboard({setBalance,setAllExpenses}){
+function Dashboard({setAllTransactions}){
     // const [allexpenses,setAllExpenses] = 
     // useLocalStorage("allexpensesss",[
     //     {id:1,spent:1000,note:"Rent",category:"Rent"},
     //     {id:2,spent:200,note:"Ate-Out",category:"Food"}
     // ])
 
-  function addIncome(i){
-    if(i===0) return
-    setBalance(prev=>Number(prev+i))
-  }
-
-  function addExpense(s,n,c){
-    if(s===0){
+  function addTransactions(a,n,c,t){
+    if(a===0){
       return
     }
-    let newexp = {
+    let trans = {
       id:Date.now(),
-      spent:s===0?0:s,
+      amount:a===0?0:a,
       note:n===""?"-":n,
-      category:c===""?"Other":c
+      category:c===""?"Other":c,
+      type:t||"expense"
     }
-    setAllExpenses(prev=>[...prev,newexp])
+    setAllTransactions(prev=>[...prev,trans])
   }
 
   return(
     <>
-      <Form
-        addIncome={addIncome}
-        addExpense={addExpense}
+      <Form               
+        addTransactions={addTransactions}
       />
     </>
   )

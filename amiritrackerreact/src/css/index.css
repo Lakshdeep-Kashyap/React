@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "ITC";
+  src: url(../assets/fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Bold.otf) format("opentype");
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -31,6 +36,8 @@ a:hover {
 body {
   margin: 0;
   height: 100vh;
+
+  font-family: "ITC", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {

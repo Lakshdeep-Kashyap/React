@@ -1,19 +1,21 @@
 import Expense from "../components/Expense.jsx"
 
-function ExpensesList({allexpenses,delExpense}){
+function ExpensesList({alltransactions,delExpense}){
     return(
         <>
             <ol>
-                {allexpenses.map((exp)=>(
-                    <li key={exp.id}>
-                        <Expense
-                            id={exp.id}
-                            spent={exp.spent}
-                            note={exp.note}
-                            category={exp.category}
-                            delExpense={delExpense}
-                        />
-                    </li>
+                {alltransactions.map((exp)=>(
+                    (exp.type==="expense"?(
+                        <li key={exp.id}>
+                            <Expense
+                                id={exp.id}
+                                amount={exp.amount}
+                                note={exp.note}
+                                category={exp.category}
+                                delExpense={delExpense}
+                            />
+                        </li>
+                    ): null)
                 ))}
             </ol>
         </>

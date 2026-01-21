@@ -2,16 +2,16 @@ import ExpensesList from "./ExpensesList"
 
 import "../css/RightPanel.css"
 
-function RightPanel({allexpenses,setAllExpenses}){
+function RightPanel({alltransactions,setAllTransactions}){
     
     function delExpense(id){
-        const newarr = allexpenses.filter((exp) => (exp.id !== id))
-        setAllExpenses(newarr)
+        const newarr = alltransactions.filter((exp) => (exp.id !== id))
+        setAllTransactions(newarr)
     }
     return(
         <aside className="right">
             <ExpensesList
-                allexpenses={allexpenses}
+                alltransactions={alltransactions}
                 delExpense={delExpense}
             />
         </aside>
