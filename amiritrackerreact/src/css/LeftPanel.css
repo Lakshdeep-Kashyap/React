@@ -5,13 +5,16 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .balance{
     width: 75%;
     height: 20%;
+
+    margin-top: 5vw;
 
     background-color: var(--lightgreen);
 
@@ -24,6 +27,12 @@
     align-items: center;
 
     font-size: xx-large;
+
+    transition: transform 0.25s ease-in-out;
+}
+
+.balance:hover{
+    transform: scale(1.05);
 }
 
 .balance p{
