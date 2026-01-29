@@ -8,11 +8,11 @@ function Form({addTransactions}){
 
     function handleEnter(e){
         e.preventDefault()
-        addTransactions(Number(s),n,c,"expense")
+        addTransactions(parseFloat(s),n,c,"expense")
     }
     function handleEnterIncome(e){
         e.preventDefault()
-        addTransactions(Number(i),"","","income")
+        addTransactions(parseFloat(i),"","","income")
     }
     return(
         <>

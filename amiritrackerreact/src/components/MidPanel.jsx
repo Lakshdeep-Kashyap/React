@@ -6,15 +6,18 @@ import Calendar from "../pages/Calendar"
 
 import "../css/MidPanel.css"
 
-function MidPanel({setAllTransactions}){
+function MidPanel({alltransactions,setAllTransactions}){
     return(
         <main className="mid">
             <Routes>
-                <Route path="/" element={<Dashboard/>}/>
+                <Route path="/" element={
+                    <Dashboard 
+                        alltransactions={alltransactions}
+                    />}/>
                 <Route path="/handleexpenses" element={
                     <HandleExpenses 
                         setAllTransactions={setAllTransactions}
-                />}/>
+                    />}/>
                 <Route path="/calendar" element={<Calendar/>}/>
             </Routes>
         </main>

@@ -1,37 +1,57 @@
-import Form from "../components/Form.jsx"
+import {ResponsivePie} from "@nivo/pie"
 
 import "../css/Dashboard.css"
 
-// import {useLocalStorage} from "../hooks/useLocalStorage.js"
+function Dashboard({alltransactions}){
 
-function Dashboard(){
-    // const [allexpenses,setAllExpenses] = 
-    // useLocalStorage("allexpensesss",[
-    //     {id:1,spent:1000,note:"Rent",category:"Rent"},
-    //     {id:2,spent:200,note:"Ate-Out",category:"Food"}
-    // ])
+  const grouped = alltransactions.reduce((acc, curr) => {
+    if (curr.type !== "expense") return acc;
 
-  // function addTransactions(a,n,c,t){
-  //   if(a===0){
-  //     return
-  //   }
-  //   let trans = {
-  //     id:Date.now(),
-  //     amount:a===0?0:a,
-  //     note:n===""?"-":n,
-  //     category:c===""?"Other":c,
-  //     type:t||"expense"
-  //   }
-  //   setAllTransactions(prev=>[...prev,trans])
-  // }
+    const amount = Number(curr.amount);
+    acc[curr.category] = (acc[curr.category] || 0) + amount;
+    return acc;
+  }, {});
 
-  // return(
-  //   <>
-  //     <Form               
-  //       addTransactions={addTransactions}
-  //     />
-  //   </>
-  // )
+  const chartData = Object.entries(grouped).map(
+    ([category, total]) => ({
+      id: category,
+      value: total
+    })
+  );
+
+  return(
+    <>
+    <div className="main">
+      <div className="piechart">
+        <ResponsivePie
+          data={chartData}
+          colors={{ scheme: 'nivo' }}
+          margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+          innerRadius={0.5}
+          padAngle={0.6}
+          cornerRadius={2}
+          activeOuterRadiusOffset={5}
+          arcLinkLabelsSkipAngle={10}
+          arcLinkLabelsTextColor="#ffffff"
+          arcLinkLabelsThickness={2}
+          arcLinkLabelsColor={{ from: 'color' }}
+          arcLabelsSkipAngle={10}
+          arcLabelsTextColor={{ from: 'color', modifiers: [['darker', 2]] }}
+          legends={[
+              {
+                  anchor: 'bottom',
+                  direction: 'row',
+                  translateY: 56,
+                  itemWidth: 100,
+                  itemHeight: 18,
+                  symbolShape: 'circle'
+              }
+          ]}
+        />
+      </div>
+    </div>
+    </>
+  )
 }
 
 export default Dashboard
