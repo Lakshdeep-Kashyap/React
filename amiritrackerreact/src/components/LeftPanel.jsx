@@ -14,7 +14,7 @@ function LeftPanel({alltransactions}){
     return(
         <aside className="left">
             <div className="balance">
-                ${balance}
+                ₹{balance}
                 <p>Current Balance</p>
             </div>
             <Navbar/>

@@ -19,7 +19,7 @@ function HandleExpenses({setAllTransactions}){
       id:Date.now(),
       amount:a===0?0:a,
       note:n===""?"-":n,
-      category:c===""?"Other":c,
+      category:c===""?"income5":c,
       type:t||"expense"
     }
     setAllTransactions(prev=>[...prev,trans])

@@ -12,6 +12,7 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+  --darkergreen: #122821;
   --darkgreen: #1C352D;
   --lightgreen: #A6B28B;
   --creme: #F5C9B0;
@@ -35,7 +36,9 @@ a:hover {
 
 body {
   margin: 0;
-  height: 100vh;
+  height: 100%;
+
+  overflow: hidden;
 
   font-family: "ITC", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }

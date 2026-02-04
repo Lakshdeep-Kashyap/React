@@ -1,3 +1,6 @@
+import AnimatedList from "../components/Animatedlist"
+import TransactionRow from "../components/TransactionRow";
+
 import {ResponsivePie} from "@nivo/pie"
 
 import "../css/Dashboard.css"
@@ -22,10 +25,10 @@ function Dashboard({alltransactions}){
   return(
     <>
     <div className="main">
-      <div className="piechart">
+      <div className="container" id="piechart">
         <ResponsivePie
           data={chartData}
-          colors={{ scheme: 'nivo' }}
+          colors={{ scheme: 'set2' }}
           margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
           innerRadius={0.5}
           padAngle={0.6}
@@ -48,6 +51,16 @@ function Dashboard({alltransactions}){
               }
           ]}
         />
+      </div>
+      <div className="container" id="sth">
+
+      </div>
+      <div className="container" id="list">
+          <AnimatedList id="list-content">
+            {alltransactions.map((txn)=>(
+              <TransactionRow key={txn.id} txn={txn} />
+            ))}
+          </AnimatedList>
       </div>
     </div>
     </>

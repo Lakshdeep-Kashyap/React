@@ -1,0 +1,43 @@
+.txn-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0vw 1vw;
+  margin-bottom: 1vw;
+
+  border-radius: 1vw;
+  background: #1e1e1e;
+}
+
+.txn-left {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  gap: 2vw;
+
+  align-items: center;
+}
+
+.txn-note {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.txn-category {
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+.txn-amount {
+  font-weight: 600;
+}
+
+.txn-row.expense .txn-amount {
+  color: #ff6b6b;
+}
+
+.txn-row.income .txn-amount {
+  color: #4cd964;
+}
